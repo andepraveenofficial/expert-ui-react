@@ -7,6 +7,7 @@
 - Introduction
 - Basic Usage Information
 - Unit Testing Strategy
+- Unit Testcase Example
 - Documentation
 </details>
 
@@ -85,6 +86,47 @@ expect(element).toHaveClass('active');
 2. perform actions (Act)
 3. verify outcomes (Assert).
 
+</details>
+
+---
+
+<details>
+<summary>Unit testcase Example</summary>
+
+## Unit testcase Example 
+```ts 
+// test(descriptioon, callback)
+	it("should render correctly", () => {
+		render(<Card />);
+		const cardElement = screen.getByTestId("card");
+		expect(cardElement).toBeInTheDocument();
+	});
+```
+
+### Writing testcase steps
+1. render
+2. Querying
+3. Assertion
+
+
+#### Write Group testcase
+
+```tsx 
+describe("Card", () => {
+
+	it("should render correctly", () => {
+		render(<Card />);
+		const cardElement = screen.getByTestId("card");
+		expect(cardElement).toBeInTheDocument();
+	});
+
+	it("should render correctly", () => {
+		const {container} = render(<Card />);
+  const firstChild = container.firstChild as HTMLElement;
+		expect(firstChild).toBeTruthy();
+	});
+});
+```
 </details>
 
 ---
